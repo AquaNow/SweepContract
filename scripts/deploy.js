@@ -9,12 +9,17 @@ const hardhat = require("hardhat");
 async function main() {
   const SweepContract = await ethers.getContractFactory("Sweep");
   console.log("Deploying MyContract...");
+  const [deployer] = await ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", deployer.address);
 
   // Deploy the contract
-  const sweepContract = await SweepContract.deploy();
+  const sweepContract = await SweepContract.deploy(
+    "0x7FBCF12dCFA4a5597b4e95c634408FdBD45161d3"
+  );
 
-  await myContract.deployed();
-  console.log("MyContract deployed to:", myContract.address);
+  console.log("SweepContract deployed to:", sweepContract.address);
+  console.log("sweepAddress:", "0x7FBCF12dCFA4a5597b4e95c634408FdBD45161d3");
 }
 
 // We recommend this pattern to be able to use async/await everywhere
