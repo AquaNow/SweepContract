@@ -22,8 +22,6 @@ contract Sweep is Ownable {
         sweepAddress = _sweepAddress;
     } 
 
-    
-
     function distributeTokens (address[] memory recipients, address _tokenAddress) public onlyOwner {
         IERC20 token = IERC20(_tokenAddress);
         for (uint256 i = 0; i < recipients.length; i++) {
